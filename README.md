@@ -131,7 +131,7 @@ All endpoints are prefixed with the base URL:
 http://127.0.0.1:8000/api/
 ```
 
-## Endpoints
+##API Endpoints
 
 ### 1. Create a User
 
@@ -144,7 +144,7 @@ http://127.0.0.1:8000/api/
 POST /api/users/
 Content-Type: application/json
 
-{
+"user":{
     "name": "Alice Johnson",
     "email": "alice.johnson@example.com",
     "mobile": "1231231234"
@@ -154,11 +154,14 @@ Content-Type: application/json
 **Sample Response:**
 ```json
 {
-    "id": 3,
+"message": "User created successfully",
+"user":{
+   "id": 3,
     "name": "Alice Johnson",
     "email": "alice.johnson@example.com",
     "mobile": "1231231234",
     "created_at": "2024-10-22T12:34:56Z"
+}
 }
 ```
 
@@ -213,7 +216,7 @@ Content-Type: application/json
 **Sample Response:**
 ```json
 {
-    "message": "Users assigned to task successfully."
+    "message": "Users assigned to the task successfully."
 }
 ```
 
@@ -236,13 +239,15 @@ GET /api/tasks/1/users/
             "id": 1,
             "name": "John Doe",
             "email": "john.doe@example.com",
-            "mobile": "1234567890"
+            "mobile": "1234567890",
+            "created_at": "2024-10-22T00:09:41.454895Z"
         },
         {
             "id": 2,
             "name": "Jane Smith",
             "email": "jane.smith@example.com",
-            "mobile": "0987654321"
+            "mobile": "0987654321",
+            "created_at": "2024-10-22T00:09:56.747981Z"
         }
     ]
 }
@@ -278,7 +283,7 @@ GET /api/users/1/tasks/
             "description": "Description for Task 2",
             "created_at": "2024-10-20T10:00:00Z",
             "updated_at": "2024-10-21T11:00:00Z",
-            "status": "completed",
+            "status": "pending",
             "task_type": "personal"
         }
     ]
