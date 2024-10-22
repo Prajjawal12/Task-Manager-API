@@ -131,7 +131,7 @@ All endpoints are prefixed with the base URL:
 http://127.0.0.1:8000/api/
 ```
 
-##API Endpoints
+## API Endpoints
 
 ### 1. Create a User
 
