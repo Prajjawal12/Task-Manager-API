@@ -127,54 +127,19 @@ task_manager/
 ## Base URL
 
 All endpoints are prefixed with the base URL:
-
 ```
 http://127.0.0.1:8000/api/
 ```
 
 ## Endpoints
 
-### 1. Get Users for a Specific Task
-
-- **Endpoint:** `/tasks/<task_id>/users/`
-- **Method:** GET
-- **Description:** Retrieve a list of users assigned to a specific task.
-
-**Request Example:**
-
-```http
-GET /api/tasks/1/users/
-```
-
-**Sample Response:**
-
-```json
-{
-  "users": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john.doe@example.com",
-      "mobile": "1234567890"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com",
-      "mobile": "0987654321"
-    }
-  ]
-}
-```
-
-### 2. Create a User
+### 1. Create a User
 
 - **Endpoint:** `/users/`
 - **Method:** `POST`
 - **Description:** Create a new user.
 
 **Request Example:**
-
 ```http
 POST /api/users/
 Content-Type: application/json
@@ -187,90 +152,23 @@ Content-Type: application/json
 ```
 
 **Sample Response:**
-
 ```json
 {
-  "id": 3,
-  "name": "Alice Johnson",
-  "email": "alice.johnson@example.com",
-  "mobile": "1231231234",
-  "created_at": "2024-10-22T12:34:56Z"
+    "id": 3,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "mobile": "1231231234",
+    "created_at": "2024-10-22T12:34:56Z"
 }
 ```
 
-### 3. Get Tasks for a Specific User
-
-- **Endpoint:** `/users/<user_id>/tasks/`
-- **Method:** `GET`
-- **Description:** Retrieve a list of tasks assigned to a specific user.
-
-**Request Example:**
-
-```http
-GET /api/users/1/tasks/
-```
-
-**Sample Response:**
-
-```json
-{
-  "tasks": [
-    {
-      "id": 1,
-      "name": "Task 1",
-      "description": "Description for Task 1",
-      "created_at": "2024-10-21T12:00:00Z",
-      "updated_at": "2024-10-22T12:00:00Z",
-      "status": "pending",
-      "task_type": "work"
-    },
-    {
-      "id": 2,
-      "name": "Task 2",
-      "description": "Description for Task 2",
-      "created_at": "2024-10-20T10:00:00Z",
-      "updated_at": "2024-10-21T11:00:00Z",
-      "status": "completed",
-      "task_type": "personal"
-    }
-  ]
-}
-```
-
-### 4. Assign User to Task
-
-- **Endpoint:** `/tasks/assign/`
-- **Method:** `POST`
-- **Description:** Assign one or more users to a specific task.
-
-**Request Example:**
-
-```http
-POST /api/tasks/assign/
-Content-Type: application/json
-
-{
-    "user_ids": [1, 2],
-    "task_id": 1
-}
-```
-
-**Sample Response:**
-
-```json
-{
-  "message": "Users assigned to task successfully."
-}
-```
-
-### 5. Create a Task
+### 2. Create a Task
 
 - **Endpoint:** `/tasks/`
 - **Method:** `POST`
 - **Description:** Create a new task.
 
 **Request Example:**
-
 ```http
 POST /api/tasks/
 Content-Type: application/json
@@ -283,16 +181,107 @@ Content-Type: application/json
 ```
 
 **Sample Response:**
-
 ```json
 {
-  "id": 3,
-  "name": "New Task",
-  "description": "This is a new task.",
-  "created_at": "2024-10-22T12:34:56Z",
-  "updated_at": "2024-10-22T12:34:56Z",
-  "status": "pending",
-  "task_type": "work"
+    "id": 3,
+    "name": "New Task",
+    "description": "This is a new task.",
+    "created_at": "2024-10-22T12:34:56Z",
+    "updated_at": "2024-10-22T12:34:56Z",
+    "status": "pending",
+    "task_type": "work"
+}
+```
+
+### 3. Assign User to Task
+
+- **Endpoint:** `/tasks/assign/`
+- **Method:** `POST`
+- **Description:** Assign one or more users to a specific task.
+
+**Request Example:**
+```http
+POST /api/tasks/assign/
+Content-Type: application/json
+
+{
+    "user_ids": [1, 2],
+    "task_id": 1
+}
+```
+
+**Sample Response:**
+```json
+{
+    "message": "Users assigned to task successfully."
+}
+```
+
+### 4. Get Users for a Specific Task
+
+- **Endpoint:** `/tasks/<task_id>/users/`
+- **Method:** GET
+- **Description:** Retrieve a list of users assigned to a specific task.
+
+**Request Example:**
+```http
+GET /api/tasks/1/users/
+```
+
+**Sample Response:**
+```json
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "mobile": "1234567890"
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "mobile": "0987654321"
+        }
+    ]
+}
+```
+
+### 5. Get Tasks for a Specific User
+
+- **Endpoint:** `/users/<user_id>/tasks/`
+- **Method:** `GET`
+- **Description:** Retrieve a list of tasks assigned to a specific user.
+
+**Request Example:**
+```http
+GET /api/users/1/tasks/
+```
+
+**Sample Response:**
+```json
+{
+    "tasks": [
+        {
+            "id": 1,
+            "name": "Task 1",
+            "description": "Description for Task 1",
+            "created_at": "2024-10-21T12:00:00Z",
+            "updated_at": "2024-10-22T12:00:00Z",
+            "status": "pending",
+            "task_type": "work"
+        },
+        {
+            "id": 2,
+            "name": "Task 2",
+            "description": "Description for Task 2",
+            "created_at": "2024-10-20T10:00:00Z",
+            "updated_at": "2024-10-21T11:00:00Z",
+            "status": "completed",
+            "task_type": "personal"
+        }
+    ]
 }
 ```
 
@@ -301,9 +290,8 @@ Content-Type: application/json
 If a request fails (e.g., due to validation errors), the API will respond with a relevant error message. Here is an example of an error response:
 
 **Sample Error Response:**
-
 ```json
 {
-  "error": "One or more users do not exist."
+    "error": "One or more users do not exist."
 }
 ```
